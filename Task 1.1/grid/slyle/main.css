@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+   }
+   #parent{
+       height: 100vh;
+       background-color: gray;
+       display:grid;
+       grid-template-columns: 20% 20% 20% 20% 20%;
+       grid-template-rows: auto;
+       grid-template-areas: 
+         "header header header header header"
+         "leftside main main main rightside"
+         "footer footer footer footer footer";
+   }
+#header{
+    width: 100vw;
+    height: 15vh;
+    background-color: rgb(0, 162, 255);
+    text-align: center;
+    color: white;
+    line-height: 15vh;
+    grid-area: header;
+
+
+}
+#footer{
+    width: 100vw;
+    height: 15vh;
+    background-color:  green;
+    text-align: center;
+    color: white;
+    line-height: 15vh;
+    bottom: 0;
+    grid-area: footer;
+    
+}
+#leftSide{
+    height: 70vh;
+    background-color: orange;
+    grid-area: leftside;
+}
+#main{
+    height: 70vh;
+    background-color: rgb(230, 171, 171);
+    grid-area: main;
+}
+#rightSide{
+    height: 70vh;
+    background-color: rgb(247, 0, 255);
+    grid-area: rightside;   
+}
+p{
+    padding-left: 2% ;
+    padding-right: 2%;
+}
+h3,h4{
+    padding-left: 2%;
+    padding-top: 2px;
+}
+@media screen and (max-width: 800px) {
+   #main{
+       height: 50vh;
+       width: 100vw;
+   }
+   #leftSide{
+       height: 10vh;
+       width: 100vw;
+   }
+   #rightSide{
+    height: 10vh;
+    width: 100vw;
+   }
+   #parent{
+    height: 100vh;
+    background-color: gray;
+    display:grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "header header header header header"
+      "leftside leftside leftside leftside leftside"
+      "main main main main main"
+      "rightside rightside rightside rightside rightside"
+      "footer footer footer footer footer"
+      ;
+}
+}
