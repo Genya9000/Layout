@@ -3,49 +3,43 @@
     padding: 0;
    }
    #parent{
-       min-height: 100vh;
+       height: 100vh;
+       width: 100vw;
        background-color: gray;
        display:grid;
-       grid-template-columns: 20% 20% 20% 20% 20%;
+       grid-template-columns: 200px 1fr 200px;
        grid-template-rows: 15% 70% 15%;       
    }
 #header{
-    width: 100vw;
-    min-height: 15vh;
     background-color: rgb(0, 162, 255);
     text-align: center;
     color: white;
     justify-items: center;
     align-items: center;
     display: grid;
-    grid-area: 1/1/2/6;
+    grid-area: 1/1/2/4;
 }
 #footer{
-    width: 100vw;
-    min-height: 15vh;
     background-color:  green;
     text-align: center;
     color: white;
     justify-items: center;
     align-items: center;
     display: grid;
-    grid-area: 5/1/6/6;
+    grid-area: 3/1/4/4;
     
 }
 #leftSide{
-    min-height: 70vh;
     background-color: orange;
     grid-area: 2/1/3/2;
 }
 #main{
-    min-height: 70vh;
     background-color: rgb(230, 171, 171);
-    grid-area: 2/2/3/5;
+    grid-area: 2/2/3/3;
 }
 #rightSide{
-    min-height: 70vh;
     background-color: rgb(247, 0, 255);
-    grid-area: 2/5/3/6;
+    grid-area: 2/3/3/4;
 }
 p{
     padding-left: 2% ;
@@ -56,31 +50,27 @@ h3,h4{
     padding-top: 2px;
 }
 @media screen and (max-width: 800px) {
-   #main{
-       grid-area: 3/1/4/2; 
-       min-height: 50%;
-   }
-   #leftSide{
-    grid-area: 2/1/3/2;
-    min-height: 10%;
-   }
-   #rightSide{
-    grid-area: 4/1/5/2;
-    min-height: 10%;
-   }
-   #footer{
-       grid-row: 5/6;
-       min-height: 15%;
-   }
-   #header{
-       grid-area: 1/1/2/3/2;
-       min-height: 15%;
-   }
    #parent{
     background-color: gray;
     grid-template-columns: 100%;
     grid-template-rows: 15% 10% 50% 10% 15%;
-    display: grid;
-    min-height: 100hv;
+}
+#header{
+    grid-area: 1/1/2/2;
+}
+#footer{
+    grid-area: 5/1/6/2;  
+}
+#leftSide{
+    background-color: orange;
+    grid-area: 2/1/3/2;
+}
+#main{
+    background-color: rgb(230, 171, 171);
+    grid-area: 3/1/4/2;
+}
+#rightSide{
+    background-color: rgb(247, 0, 255);
+    grid-area: 4/1/5/2;
 }
 }
