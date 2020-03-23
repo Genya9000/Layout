@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="circle" :style="circleClasses"></div>
+        <div class="circle":style="[circleClasses, {'width' : height + 'px'}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+        <input type="text" v-model="height">
+        <input type="text" v-on:input="changeName">
+        <h1>Hello {{name}}</h1>
+        <input type="text" v-model.lazy="name">
+        <h1>Hello {{name}}</h1>
+        <h1>Hello {{seyHello()}}</h1>
+        <h1>if statement {{ isOk? 'I am OK' : 'I am not OK'}}</h1>
+        <h1>Function {{string.split('').reverse().join('')}}</h1>
+        <h2><a v-bind:href="url" v-on:click>{{url}}</a></h2>
+        <h3>Счетчик = {{counter}}</h3>   
+        <button v-on:click="riseCounter(5, $event)">Увеличить for 5</button>
+        <h3 v-on:mouseover="onHover">Счетчик = {{counter2}}</h3>   
+        <button v-on:click.stop="counter2++">Увеличить </button>
+        <h2 v-if="type==='a'">A</h2>
+        <h2 v-else-if="type==='b'">B</h2>
+        <h2 v-else-if="type==='c'">C</h2>
+        <h2 v-else>not match</h2>
+        <input type="text" v-model="type">
+        <template v-if="isVisible">
+        <h2>I am title</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, magni.</p>
+        </template>
+        <template v-else>
+            <h2 style="color:red">I am title</h2>
+            <p style="color:blue">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, magni.</p>
+            </template>
+            <ul>
+                <li v-for="(person, index) in people">{{ index+1+' ' }}{{ person }}</li>
+                <li v-for="(person, index) in objects">{{ index+1+' ' }}. {{ person.name }} - 
+                    <b>{{ person.age }}</b></li>
+            </ul>
+            <ol>
+                <li v-for="num of 10">{{num}}</li>
+            </ol>
+            <ul>
+                <li v-for="(value, key, index) of cars">{{key}} {{value}}</li>
+            </ul>
+            <h2>Counter {{Counterr}} \ {{Counterr2}}</h2>
+            <h3>Result: {{result()}}</h3>
+            <h3>Computed Result: {{computedResult}}</h3>
+            <button @click="add">Add</button>
+            <button @click="sub">Sub</button>
+            <button @click="Counterr2++">add counter 2</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'Vue!',
+                isOk: false,
+                string: 'My name is Vlad',
+                url: 'https://google.com',
+                counter: 0,
+                counter2: 0,
+                color: 'blue',
+                height: 100,
+                type: 'a',
+                isVisible: false,
+                people: [
+                    'Vlad',
+                    'Piter',
+                    'Pen'
+                ],
+                objects: [
+                    {name: 'Sobol', age: 25},
+                    {name: 'Sobol3', age: 26},
+                    {name: 'Sobol45', age: 28},
+                ],
+                cars: {name: "BMW",
+                age: 32,
+                color: 'red' 
+                },
+                Counterr2: 0,
+                Counterr: 0
+            },
+            computed:{
+                circleClasses: function(){
+                    return {
+                        'background': this.color,
+                        'height': this.height + 'px'
+                    }
+                },
+                computedResult: function(){
+                    console.log('Computed result was called')
+                    return this.Counterr>3 ? 'More then 3' : 'Less then 3'
+                }   
+            },
+            methods: {
+                changeName: function(event){
+                    this.name = event.target.value
+                },
+                seyHello: function(){
+                    return 'I am here'
+                },
+                riseCounter: function(num, event){
+                    this.counter+=num
+                     if(num === 5){
+                         event.target.style.color = 'red'
+                     }
+                     else {
+                        event.target.style.color = 'green'   
+                     }
+                },
+                onHover: function(event){
+                    event.target.style.color = 'red'
+                },
+                add: function(){
+                    this.Counterr++
+                },
+                sub: function(){
+                    this.Counterr--
+                },
+                result: function(){
+                    console.log('Result was called')
+                    return this.Counterr > 3 ? 'More then 3' : 'Less then 3'
+                }
+            },
+            watch: {
+                Counterr: function(num){
+                    console.log('from watch ', num)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
