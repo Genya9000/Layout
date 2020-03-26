@@ -54,6 +54,8 @@
             <button @click="add">Add</button>
             <button @click="sub">Sub</button>
             <button @click="Counterr2++">add counter 2</button>
+            <h2 ref="heading">{{title1}}</h2>
+            <button @click="updateTitle">Update Title</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -85,7 +87,8 @@
                 color: 'red' 
                 },
                 Counterr2: 0,
-                Counterr: 0
+                Counterr: 0,
+                title1: 'Hello All'
             },
             computed:{
                 circleClasses: function(){
@@ -127,7 +130,12 @@
                 result: function(){
                     console.log('Result was called')
                     return this.Counterr > 3 ? 'More then 3' : 'Less then 3'
+                },
+                updateTitle: function(){
+                    this.title1 = 'New Title'
+                    this.$refs.heading.style.color = 'red'
                 }
+                
             },
             watch: {
                 Counterr: function(num){
